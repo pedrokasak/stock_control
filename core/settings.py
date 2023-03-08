@@ -92,7 +92,7 @@ DATABASES = {
     },
     'production': dj_database_url.config(
             # Feel free to alter this value to suit your needs.
-            default='postgres://testdb_cp4p_user:lon3pvGX0GFyqyziQB4HY29VBTZfKl3F@dpg-cfi3te4gqg40klldg7q0-a.oregon-postgres.render.com/testdb_cp4p'
+            default='postgres://testdb_cp4p_user:lon3pvGX0GFyqyziQB4HY29VBTZfKl3F@dpg-cfi3te4gqg40klldg7q0-a/testdb_cp4p'
     )
 }
 
