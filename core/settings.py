@@ -75,26 +75,18 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
-    "default": {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'PORT': '5432'
-    },
-    'production': dj_database_url.config(
-            # Feel free to alter this value to suit your needs.
-            default='postgres://testdb_cp4p_user:lon3pvGX0GFyqyziQB4HY29VBTZfKl3F@dpg-cfi3te4gqg40klldg7q0-a/testdb_cp4p'
-    )
+    }
+
 }
+
+
 
 
 # Password validation
@@ -127,13 +119,16 @@ USE_I18N = True
 
 USE_TZ = False
 
+
+FIXTURE_DIRS = (os.path.join(BASE_DIR, 'core', 'fixtures'),)
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATICFILES_DIR = os.path.join(BASE_DIR, 'templates', 'static')
 
-FIXTURE_DIRS = (
-    os.path.join(BASE_DIR, 'core', 'fixtures'),
-)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'templates', 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
