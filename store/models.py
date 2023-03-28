@@ -19,7 +19,7 @@ class Store(models.Model):
     name = models.CharField(verbose_name='Nome', max_length=100, null=False)
     cnpj = models.CharField(verbose_name='CNPJ', max_length=20, unique=True)
     date_of_fundation = models.DateTimeField(auto_now=True)
-    image = models.ImageField(upload_to='media/products/%Y/%m/%d')
+    image = models.ImageField(upload_to='media/products/%Y/%m/%d', null=True, blank=True)
     address = models.ForeignKey(Address, verbose_name='Endereço', on_delete=models.CASCADE)
 
     class Meta:
