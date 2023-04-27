@@ -1,5 +1,5 @@
 {% extends 'base_admin.html' %}
-{% block title %} Stock Manager - Criação de lojas {% endblock title %}
+{% block title %} Stock Manager - Edição de lojas {% endblock title %}
 {% block content %}
 {% load static %}
 
@@ -7,7 +7,7 @@
 <form method="post">
   {% csrf_token %}
 <div class="container-fluid">
-  <h1 class="h3 mb-2 text-gray-800">Criar Loja</h1>
+  <h1 class="h3 mb-2 text-gray-800">Editar Loja</h1>
     <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
         For more information about DataTables, please visit the </p>
   <div class="mb-3">
@@ -27,7 +27,6 @@
     <label for="formFileSm" class="form-label">Endereço</label>
     {{form.address}}
   </div>
-  <hr/>
   <div class="mb-3">
     <label for="formFileSm" class="form-label">Cidade</label>
     {{form.city}}
@@ -40,7 +39,7 @@
     <label for="formFileSm" class="form-label">País</label>
     {{form.country}}
   </div>
-  <button type="submit" class="btn btn-primary">Cadastrar Loja</button>
+  <button type="submit" class="btn btn-primary">Salvar</button>
   <button type="button" class="btn btn-secondary">Voltar</button>
 
 </div>

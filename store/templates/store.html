@@ -12,15 +12,13 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-        For more information about DataTables, please visit the <a target="_blank"
-            href="https://datatables.net">official DataTables documentation</a>.</p>
+    <h1 class="h3 mb-2 text-gray-800">Lojas Cadastradas</h1>
+    <p class="mb-4">As lojas cadastradas incluem a mtríz e suas respectivas filiais, ou caso seja de uma franquia.
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Listagem de lojas</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -34,6 +32,7 @@
                             <th>Rua</th>
                             <th>Cidade</th>
                             <th>Estado</th>
+                            <th>Ação</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -45,21 +44,29 @@
                             <th>Rua</th>
                             <th>Cidade</th>
                             <th>Estado</th>
+                            <th>Ação</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         <tr>
-                            {% for stores in store%}
-                            <td>{{stores.name}}</td>
-                            <td>{{stores.cnpj}}</td>
-                            <td>{{stores.date_of_fundation}}</td>
-                            <td>{{stores.images}}</td>
-                            <td>{{stores.address.address}}</td>
-                            <td>{{stores.address.city}}</td>
-                            <td>{{stores.address.state}}</td>
+                            {% for store in stores %}
+                            <td>{{store.name}}</td>
+                            <td>{{store.cnpj}}</td>
+                            <td>{{store.date_of_fundation}}</td>
+                            <td>{{store.images}}</td>
+                            <td>{{store.address}}</td>
+                            <td>{{store.city}}</td>
+                            <td>{{store.state}}</td>
+                            <td>
+                                <a href="{% url 'store:edit_store' store.pk %}">
+                                <button type="submit" class="btn btn-primary">Editar Loja</button>
+                                </a>
+                                <a href="{% url 'store:delete_store' store.pk %}">
+                                <button type="button" class="btn btn-danger">Excluir</button>
+                                </a>
+                            </td>
                             {% endfor %}
                         </tr>
-
                     </tbody>
                 </table>
             </div>

@@ -62,7 +62,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
+        'NAME': 'stock_control',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'PORT': '5432'
