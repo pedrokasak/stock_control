@@ -59,6 +59,10 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+db_config = dj_database_url.config(default='postgres://testdb_cp4p_user:lon3pvGX0GFyqyziQB4HY29VBTZfKl3F@dpg-cfi3te4gqg40klldg7q0-a.oregon-postgres.render.com/testdb_cp4p')
+db_config['ATOMIC_REQUESTS'] = True
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -66,7 +70,8 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'PORT': '5432'
-    }
+    },
+    'production': db_config
 
 }
 
