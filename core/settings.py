@@ -109,10 +109,10 @@ USE_TZ = True
 FIXTURE_DIRS = (os.path.join(BASE_DIR, 'core', 'fixtures'),)
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'templates', 'static')]
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'templates', 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'templates', 'static')]
+# PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'templates', 'staticfiles')
 
 
 MEDIA_URL = '/media/'
