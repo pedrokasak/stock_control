@@ -1,4 +1,7 @@
 venv
+venv_linux
+.venv
+env
 .idea
 staticfiles
 db.sqlite3
