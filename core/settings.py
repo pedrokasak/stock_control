@@ -65,6 +65,28 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# BD MySQL
+# DATABASES = {
+#     'default': {
+#       #'ENGINE': 'django.db.backends.postgresql',
+# 'NAME': config('NAME'),
+# 'USER': config('USER'),
+# 'PASSWORD': config('PASSWORD'),
+# 'HOST': 'db',   # Or an IP Address that your DB is hosted on
+# 'PORT': '5432',
+#     }
+# }
+
+# default_db_url = 'sqlite:///' + str(BASE_DIR / 'db.sqlite3')
+#
+# parse_database = partial(dj_database_url.parse, conn_max_age=600)
+
+# 'default': config('DATABASE_URL', default=default_db_url, cast=parse_database)
+# DATABASES = {
+#     'default': config('DATABASE_URL', default=default_db_url, cast=parse_database)
+# }
+
+
 db_config = dj_database_url.config(default='postgres://testdb_cp4p_user:lon3pvGX0GFyqyziQB4HY29VBTZfKl3F@dpg-cfi3te4gqg40klldg7q0-a/testdb_cp4p')
 db_config['ATOMIC_REQUESTS'] = True
 
@@ -77,7 +99,14 @@ DATABASES = {
         'PASSWORD': 'postgres',
         'PORT': '5432'
     },
-    'production': db_config
+    'production': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'usersdb',
+        'USER': 'postgres',
+        'PASSWORD': 'admin1234',
+        'HOST': 'localhost',
+        'PORT': '5432'
+    }
 
 }
 
