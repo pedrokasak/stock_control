@@ -101,10 +101,10 @@ DATABASES = {
     },
     'production': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'usersdb',
-        'USER': 'postgres',
-        'PASSWORD': 'admin1234',
-        'HOST': 'localhost',
+        'NAME': 'testdb_cp4p',
+        'USER': 'testdb_cp4p_user',
+        'PASSWORD': 'lon3pvGX0GFyqyziQB4HY29VBTZfKl3F',
+        'HOST': 'dpg-cfi3te4gqg40klldg7q0-a',
         'PORT': '5432'
     }
 
