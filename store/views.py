@@ -7,7 +7,7 @@ from store.models import Store
 def store(request):
     templates_html = 'store.html'
     stores = Store.objects.all()
-    return render(request, templates_html, {'store': store})
+    return render(request, templates_html, {'stores': stores})
 
 
 def create_store(request):

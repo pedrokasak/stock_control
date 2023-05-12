@@ -15,9 +15,6 @@ DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = []
 
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -28,11 +25,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'store.apps.StoreConfig',
     'pages.apps.PagesConfig',
+    'customers.apps.CustomersConfig',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -87,27 +84,14 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # }
 
 
-db_config = dj_database_url.config(default='postgres://testdb_cp4p_user:lon3pvGX0GFyqyziQB4HY29VBTZfKl3F@dpg-cfi3te4gqg40klldg7q0-a/testdb_cp4p')
-db_config['ATOMIC_REQUESTS'] = True
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'stock_control',
+        'NAME': 'stock_manager',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'PORT': '5432'
-    },
-    'production': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'testdb_cp4p',
-        'USER': 'testdb_cp4p_user',
-        'PASSWORD': 'lon3pvGX0GFyqyziQB4HY29VBTZfKl3F',
-        'HOST': 'dpg-cfi3te4gqg40klldg7q0-a',
-        'PORT': '5432'
     }
-
 }
 
 # Password validation

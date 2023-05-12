@@ -25,45 +25,49 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Nome da Loja</th>
-                            <th>CNPJ</th>
-                            <th>Data de Fundação</th>
-                            <th>Foto</th>
-                            <th>Rua</th>
+                            <th>Nome do cliente</th>
+                            <th>CPF</th>
+                            <th>Data Nascimento</th>
+                            <th>Serviço</th>
+                            <th>Endereço</th>
                             <th>Cidade</th>
                             <th>Estado</th>
+                            <th>País</th>
                             <th>Ação</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Nome da Loja</th>
-                            <th>CNPJ</th>
-                            <th>Data de Fundação</th>
-                            <th>Foto</th>
-                            <th>Rua</th>
+                            <th>Nome do cliente</th>
+                            <th>CPF</th>
+                            <th>Data Nascimento</th>
+                            <th>Serviço</th>
+                            <th>Endereço</th>
                             <th>Cidade</th>
                             <th>Estado</th>
+                            <th>País</th>
                             <th>Ação</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                    {% for store in stores %}
+                    {% for customers in customer %}
                         <tr>
-                            <td>{{store.name}}</td>
-                            <td>{{store.cnpj}}</td>
-                            <td>{{store.date_of_fundation}}</td>
-                            <td>{{store.images}}</td>
-                            <td>{{store.address}}</td>
-                            <td>{{store.city}}</td>
-                            <td>{{store.state}}</td>
+                            <td>{{customers.name}}</td>
+                            <td>{{customers.cpf}}</td>
+                            <td>{{customers.date_of_birth}}</td>
+                            <td>{{customers.service}}</td>
+                            <td>{{customers.address}}</td>
+                            <td>{{customers.city}}</td>
+                            <td>{{customers.state}}</td>
+                            <td>{{customers.country}}</td>
                             <td>
-                                <a href="{% url 'store:edit_store' store.pk %}">
-                                <button type="submit" class="btn btn-primary">Editar Loja</button>
+                               <a href="{% url 'customers:edit_customer' customers.pk %}">
+                                <button type="submit" class="btn btn-primary">Editar cliente</button>
                                 </a>
-                                <a href="{% url 'store:delete_store' store.pk %}">
-                                <button type="button" class="btn btn-danger">Excluir</button>
+                                <a href="{% url 'customers:delete_customer' customers.pk %}">
+                                <button type="submit" class="btn btn-danger">Deletar cliente</button>
                                 </a>
+
                             </td>
                         </tr>
                     {% endfor %}
