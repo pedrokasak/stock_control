@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'store.apps.StoreConfig',
     'pages.apps.PagesConfig',
     'customers.apps.CustomersConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

@@ -7,10 +7,11 @@ class StoreForm(forms.ModelForm):
 
         model = Store
 
-        fields = ['name', 'cnpj', 'image', 'address', 'city', 'state', 'country']
+        fields = ['name', 'cnpj', 'email', 'image', 'address', 'city', 'state', 'country']
         widgets = {
             'name': forms.TextInput(attrs={'type': 'text', 'class':'form-control', 'placeholder': 'Nome da Loja'}),
             'cnpj': forms.TextInput(attrs={'type': 'text', 'class': 'form-control', 'placeholder': 'CNPJ'}),
+            'email': forms.TextInput(attrs={'type': 'text', 'class': 'form-control', 'placeholder': 'E-mail'}),
             'image': forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'Imagem da loja'}),
             'address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Informe um endereço'}),
             'city': forms.TextInput(attrs={'type': 'text', 'class': 'form-control', 'placeholder': 'Cidade'}),

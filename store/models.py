@@ -4,8 +4,9 @@ from django.db import models
 class Store(models.Model):
     name = models.CharField(verbose_name='Nome', max_length=100, null=False)
     cnpj = models.CharField(verbose_name='CNPJ', max_length=20, unique=True)
-    date_of_fundation = models.DateTimeField(auto_now=True)
-    image = models.ImageField(upload_to='media/products/%Y/%m/%d', null=True, blank=True)
+    date_of_fundation = models.DateField(auto_now=True)
+    email = models.EmailField(verbose_name='Email da empresa', unique=True)
+    image = models.ImageField(upload_to='media/products/%Y/%m/%d', blank=True)
     address = models.CharField(verbose_name='Rua', max_length=100, null=True)
     city = models.CharField(verbose_name='Cidade', max_length=100, null=True)
     state = models.CharField(verbose_name='Estado', max_length=20, null=True)
