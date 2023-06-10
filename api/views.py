@@ -1,46 +1,47 @@
-from django.shortcuts import render
-
-import json
-
-from django.shortcuts import render
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from api.serializers import StoreSerializers
+
+from api.broker import StoreApp
+from api.serializers import StoreSerializers, StoreDeSerializers
 from store.models import Store
 
 
 class StoreView(APIView):
-    @staticmethod
-    def get_store_in_json():
-        queryset = Store.objects.all()
-        data = []
-
-        for store in queryset:
-            store_data = {
-                'name': store.name,
-                'cnpj': store.cnpj,
-                'email': store.email,
-                'dateOfundation': store.date_of_fundation.strftime('%Y-%m-%d'),
-                'address': store.address,
-                'city': store.city,
-                'state': store.state,
-                'country': store.country
-            }
-
-            if store.image:
-                store_data['image'] = store.image.url
-            else:
-                store_data['image'] = 'noting'
-
-            data.append(store_data)
-
-        return data
 
     def get(self, request):
-        content = self.get_store_in_json()
+        store_app = StoreApp()
+        content = store_app.get_store_info_and_return_in_json()
         store_serializer = StoreSerializers(data=content, many=True)
         if store_serializer.is_valid():
             return Response(store_serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(store_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def post(self, request):
+        body_request = request.data
+        store_app = StoreApp()
+
+        if isinstance(body_request, list):
+            try:
+                # Trata de uma lista de objetos
+                store_serializer = StoreDeSerializers(data=body_request, many=True)
+                if store_serializer.is_valid():
+                    create_data = store_app.set_info_store(data=store_serializer.data)
+                    if create_data:
+                        return Response(store_serializer.data, status=status.HTTP_201_CREATED)
+                    else:
+                        return Response(store_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            except Exception as e:
+                return Response({'message': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            try:
+                # Trata somente um objeto único
+                store_serializer = StoreDeSerializers(data=body_request)
+                if store_serializer.is_valid():
+                    store_serializer.save()
+                    return Response(store_serializer.data, status=status.HTTP_201_CREATED)
+                else:
+                    return Response(store_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            except Exception as e:
+                return Response({'message': str(e)}, status=status.HTTP_400_BAD_REQUEST)
