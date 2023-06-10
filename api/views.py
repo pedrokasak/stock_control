@@ -45,3 +45,33 @@ class StoreView(APIView):
                     return Response(store_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             except Exception as e:
                 return Response({'message': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+    def put(self, request):
+        body_request = request.data
+        cnpj = body_request.get('cnpj')
+        store = Store.objects.get(cnpj=cnpj)
+        try:
+            store_serializer = StoreDeSerializers(data=body_request)
+            if store_serializer.is_valid():
+                store_serializer.update(store, body_request)
+                return Response(store_serializer.validated_data, status=status.HTTP_200_OK)
+            else:
+                return Response(store_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response({'message': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+    def patch(self, request):
+        body_request = request.data
+        cnpj = body_request.get('cnpj')
+        try:
+            store = Store.objects.get(cnpj=cnpj)
+            store_serializer = StoreDeSerializers(store, data=body_request, partial=True)
+            if store_serializer.is_valid():
+                store_serializer.update(store, store_serializer.validated_data)
+                return Response(store_serializer.validated_data, status=status.HTTP_200_OK)
+            else:
+                return Response(store_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except Store.DoesNotExist:
+            return Response({'message': 'Store not found.'}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({'message': str(e)}, status=status.HTTP_400_BAD_REQUEST)
