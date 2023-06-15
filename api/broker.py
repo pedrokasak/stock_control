@@ -41,7 +41,6 @@ class StoreApp:
     def set_info_store(data):
         try:
             store_list = []
-
             if isinstance(data, list):
                 for item in data:
                     store = Store(**item)
@@ -49,8 +48,8 @@ class StoreApp:
             else:
                 store = Store(**data)
                 store_list.append(store)
-
             Store.objects.bulk_create(store_list)
             return True
         except Exception as e:
             raise Exception('Failed to create store: {}'.format(str(e)))
+

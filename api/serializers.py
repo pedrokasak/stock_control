@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from store.models import Store
 
+
 class StoreSerializers(serializers.Serializer):
     name = serializers.CharField(max_length=100)
     cnpj = serializers.CharField(max_length=30)
