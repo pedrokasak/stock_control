@@ -1,0 +1,44 @@
+{% extends 'base_admin.html' %}
+{% block title %} Stock Manager - Criação de cliente {% endblock title %}
+{% block content %}
+{% load static %}
+
+
+<form method="post">
+  {% csrf_token %}
+<div class="container-fluid">
+  <h1 class="h3 mb-2 text-gray-800">Criar cliente</h1>
+    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+        For more information about DataTables, please visit the </p>
+  <div class="mb-3">
+    <label for="formFile" class="form-label">Nome do Fornecedor</label>
+    {{form.name}}
+<!--    <input class="form-control" type="text" id="formFile">-->
+  </div>
+  <div class="mb-3">
+    <label for="formFileMultiple" class="form-label">CNPJ</label>
+    {{form.cnpj}}
+  </div>
+  <hr/>
+  <div class="mb-3">
+    <label for="formFileSm" class="form-label">Endereço</label>
+    {{form.address}}
+  </div>
+  <div class="mb-3">
+    <label for="formFileSm" class="form-label">Cidade</label>
+    {{form.city}}
+  </div>
+  <div class="mb-3">
+    <label for="formFileSm" class="form-label">Estado</label>
+    {{form.state}}
+  </div>
+    <div class="mb-3">
+    <label for="formFileSm" class="form-label">País</label>
+    {{form.country}}
+  </div>
+  <button type="submit" class="btn btn-primary">Cadastrar Fornecedor</button>
+  <button type="button" class="btn btn-secondary" onClick="history.go(-1)">Voltar</button>
+
+</div>
+</form>
+{% endblock content %}

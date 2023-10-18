@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'store.apps.StoreConfig',
     'pages.apps.PagesConfig',
     'customers.apps.CustomersConfig',
+    'suppliers.apps.SuppliersConfig',
     'rest_framework',
     'drf_spectacular',
 ]

@@ -7,7 +7,7 @@ class Store(models.Model):
     date_of_fundation = models.DateField(auto_now=True)
     email = models.EmailField(verbose_name='Email da empresa', unique=True)
     image = models.ImageField(upload_to='media/products/%Y/%m/%d', blank=True)
-    address = models.CharField(verbose_name='Rua', max_length=100, null=True)
+    address = models.CharField(verbose_name='Endereço', max_length=100, null=True)
     city = models.CharField(verbose_name='Cidade', max_length=100, null=True)
     state = models.CharField(verbose_name='Estado', max_length=20, null=True)
     country = models.CharField(verbose_name='País', max_length=50, null=True)

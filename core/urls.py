@@ -9,6 +9,7 @@ urlpatterns = [
     path('dashboard/', include('pages.urls')),
     path('dashboard/store/', include('store.urls')),
     path('dashboard/customer/', include('customers.urls')),
+    path('dashboard/supplier/', include('suppliers.urls')),
     path('api/v1/', include('api.urls')),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
