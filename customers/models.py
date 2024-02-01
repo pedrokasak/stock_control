@@ -1,5 +1,7 @@
 from django.db import models
 
+from store.models import Store
+
 
 class Customers(models.Model):
     name = models.CharField(verbose_name='Cliente', max_length=150, null=False, blank=False)
@@ -11,6 +13,7 @@ class Customers(models.Model):
     city = models.CharField(verbose_name='Cidade', max_length=100, null=True)
     state = models.CharField(verbose_name='Estado', max_length=20, null=True)
     country = models.CharField(verbose_name='País', max_length=50, null=True)
+    store = models.ForeignKey(Store, verbose_name='Lojas', on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'customer'

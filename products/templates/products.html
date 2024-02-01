@@ -1,5 +1,5 @@
 {% extends 'base_admin.html' %}
-{% block title %} Stock Manager - Listagem de lojas {% endblock title %}
+{% block title %} Stock Manager - Listagem de Produtos {% endblock title %}
 {% block content %}
 {% load static %}
 
@@ -12,64 +12,54 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Lojas Cadastradas</h1>
-    <p class="mb-4">As lojas cadastradas incluem a mtríz e suas respectivas filiais, ou caso seja de uma franquia.
+    <h1 class="h3 mb-2 text-gray-800">Produtos Cadastrados</h1>
+    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+        For more information about DataTables, please visit the
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Listagem de lojas</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Listagem de Produtos</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Nome da Loja</th>
-                            <th>CNPJ</th>
-                            <th>Data de Fundação</th>
-                            <th>Foto</th>
-                            <th>Clientes</th>
-                            <th>Fornecedores</th>
-                            <th>Rua</th>
-                            <th>Cidade</th>
-                            <th>Estado</th>
+                            <th>Nome do produto</th>
+                            <th>Lote</th>
+                            <th>Data de Criação</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
                             <th>Ação</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Nome da Loja</th>
-                            <th>CNPJ</th>
-                            <th>Data de Fundação</th>
-                            <th>Foto</th>
-                            <th>Clientes</th>
-                            <th>Fornecedores</th>
-                            <th>Rua</th>
-                            <th>Cidade</th>
-                            <th>Estado</th>
+                            <th>Nome do produto</th>
+                            <th>Lote</th>
+                            <th>Data de Criação</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
                             <th>Ação</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                    {% for store in stores %}
+                    {% for product in products %}
                         <tr>
-                            <td>{{store.name}}</td>
-                            <td>{{store.cnpj}}</td>
-                            <td>{{store.date_of_fundation}}</td>
-                            <td>{{store.images}}</td>
-                            <td>{{store.customers}}</td>
-                            <td>{{store.suppliers}}</td>
-                            <td>{{store.address}}</td>
-                            <td>{{store.city}}</td>
-                            <td>{{store.state}}</td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.batch}}</td>
+                            <td>{{product.manufacturing_date}}</td>
+                            <td>{{product.brand}}</td>
+                            <td>{{product.model}}</td>
                             <td>
-                                <a href="{% url 'store:edit_store' store.pk %}">
-                                <button type="submit" class="btn btn-primary">Editar Loja</button>
+                               <a href="{% url 'products:edit_product' product.pk %}">
+                                <button type="submit" class="btn btn-primary">Editar produto</button>
                                 </a>
-                                <a href="{% url 'store:delete_store' store.pk %}">
-                                <button type="button" class="btn btn-danger">Excluir</button>
+                                <a href="{% url 'products:delete_products' product.pk %}">
+                                <button type="submit" class="btn btn-danger">Deletar produto</button>
                                 </a>
+
                             </td>
                         </tr>
                     {% endfor %}
@@ -83,8 +73,6 @@
 
 </div>
 <!-- End of Main Content -->
-
-
 
 </div>
 <!-- End of Content Wrapper -->

@@ -1,0 +1,17 @@
+{% extends 'base_admin.html' %}
+{% block title %} Stock Manager - Deletar Produto {% endblock title %}
+{% block content %}
+{% load static %}
+
+<form method="post">
+  {% csrf_token %}
+<div class="container-fluid">
+  <h1 class="h3 mb-2 text-gray-800">Excluir Produto</h1>
+    <p class="mb-4">Você realmente deseja deletar <b>{{product.name}}</b>?</p>
+
+  <button type="submit" class="btn btn-danger">Deletar</button>
+  <button type="button" class="btn btn-primary" onClick="history.go(-1)">Voltar</button>
+
+</div>
+</form>
+{% endblock content %}

@@ -7,7 +7,7 @@ class CustomerForm(forms.ModelForm):
     class Meta:
         model = Customers
 
-        fields = ['name', 'cpf', 'date_of_birth', 'service', 'address', 'city', 'state', 'country']
+        fields = ['name', 'cpf', 'date_of_birth', 'service', 'address', 'city', 'state', 'country', 'store']
         widgets = {
             'name': forms.TextInput(attrs={'type': 'text', 'class': 'form-control', 'placeholder': 'Nome do cliente'}),
             'cpf': forms.TextInput(attrs={'type': 'text', 'class': 'form-control', 'placeholder': 'CPF'}),
@@ -18,4 +18,5 @@ class CustomerForm(forms.ModelForm):
             'city': forms.TextInput(attrs={'type': 'text', 'class': 'form-control', 'placeholder': 'Cidade'}),
             'state': forms.TextInput(attrs={'type': 'text', 'class': 'form-control', 'placeholder': 'Estado'}),
             'country': forms.TextInput(attrs={'type': 'text', 'class': 'form-control', 'placeholder': 'País'}),
+            'store': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Selecione no nome da loja'}),
         }

@@ -18,6 +18,7 @@ class StoreView(APIView):
         else:
             return Response(store_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 class SpecificStoreView(APIView):
 
     # def get(self, request, cnpj):

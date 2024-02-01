@@ -1,0 +1,53 @@
+{% extends 'base_admin.html' %}
+{% block title %} Stock Manager - Edição de Produto {% endblock title %}
+{% block content %}
+{% load static %}
+
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="container-fluid">
+    <h1 class="h3 mb-2 text-gray-800">Editar Produto</h1>
+       {% if form.instance.image.url %}
+      <img class="img-profile rounded-circle" src="{{ form.instance.image.url }}" style="width: 10rem;height: 10rem;"
+          alt="User-Profile-Image">
+      {% else %}
+      <img class="img-profile rounded-circle" src="{% static 'img/profile.png' %}" style="width: 10rem;height: 10rem;"
+          alt="User-Profile-Image">
+      {% endif %}
+      <div class="mb-3">
+      <label for="formFile" class="form-label">Nome do Produto</label>
+      {{form.name}}
+        <!--    <input class="form-control" type="text" id="formFile">-->
+    </div>
+    <div class="mb-3">
+      <label for="formFileMultiple" class="form-label">Lote</label>
+      {{form.batch}}
+    </div>
+    <hr/>
+    <div class="mb-3">
+      <label for="formFileSm" class="form-label">Data de criação</label>
+      {{form.manufacturing_date}}
+    </div>
+    <div class="mb-3">
+      <label for="formFileSm" class="form-label">Marca</label>
+      {{form.brand}}
+    </div>
+    <div class="mb-3">
+      <label for="formFileSm" class="form-label">Modelo</label>
+      {{form.model}}
+    </div>
+    <div class="mb-3">
+      <label for="formFileSm" class="form-label">Foto do Produto</label>
+      {{form.image}}
+    </div>
+    <div class="mb-3">
+      <label for="formFileSm" class="form-label">Fornecedor</label>
+      {{form.supplier}}
+    </div>
+  <button type="submit" class="btn btn-primary">Editar Produto</button>
+  <button type="button" class="btn btn-secondary" onClick="history.go(-1)">Voltar</button>
+
+</div>
+</form>
+{% endblock content %}

@@ -17,7 +17,7 @@ def create_supplier(request):
     if request.method == 'POST':
         if form.is_valid():
             form.save()
-            return redirect('suppliers:create_supplier')
+            return redirect('suppliers:suppliers')
         else:
             print(form.errors)
     return render(request, template_name=template_name, context=context)
