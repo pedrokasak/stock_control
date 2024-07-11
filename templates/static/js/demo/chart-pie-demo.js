@@ -33,3 +33,12 @@ var myPieChart = new Chart(ctx, {
     cutoutPercentage: 80,
   },
 });
+
+// Lojas cadastradas
+async function getQuantityStore() {
+   fetch('http://127.0.0.1:8000/api/v1/store', { method: "GET" })
+    .then(response => response.json())
+    .then(data => console.log(data.length))
+    .catch(error => console.error(error))
+}
+
